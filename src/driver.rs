@@ -323,7 +323,7 @@ pub fn main() {
                 toolchain_path(home, toolchain)
             })
             .or_else(|| {
-                Command::new("rustc")
+                Command::new(env::var("RUSTC").unwrap_or("rustc"))
                     .arg("--print")
                     .arg("sysroot")
                     .output()
